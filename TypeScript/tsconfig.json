@@ -8,11 +8,16 @@
     "baseUrl": "./",
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,
     "paths": {
       "@/*": [
         "app/*"
       ]
-    }
+    },
+    "types": [
+      "vitest/globals"
+    ]
   },
   "exclude": [
     "node_modules"
