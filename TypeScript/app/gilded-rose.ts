@@ -16,7 +16,7 @@ export class GildedRose {
   private maxQuality = 50;
   private minQuality = 0;
 
-  items: Array<Item>;
+  private readonly items: Array<Item>;
 
   constructor(items = [] as Array<Item>) {
     // Validate the incoming items
