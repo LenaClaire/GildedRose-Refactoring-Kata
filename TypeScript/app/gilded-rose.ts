@@ -12,6 +12,15 @@ export class Item {
   }
 }
 
+/**
+ * Possible extras:
+ *
+ * - Make the items immutable to prevent side effects from outside the class.
+ * - Saving the items to a datasource: the update should be done in a transaction to prevent partial updates.
+ * - Add a method to add items to the list.
+ * - Add a method to remove items from the list.
+ *
+ */
 export class GildedRose {
   private maxQuality = 50;
   private minQuality = 0;
