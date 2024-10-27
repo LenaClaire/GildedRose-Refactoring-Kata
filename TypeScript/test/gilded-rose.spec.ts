@@ -177,6 +177,28 @@ describe('Gilded Rose - updateQuality', () => {
     expect(items[0]?.sellIn).toBe(-1)
   })
 
+  it('should not decrease quality below zero for Conjured items', () => {
+    const gildedRose = new GildedRose([
+      // Test if a -2 decrease is capped at 0
+      new Item('Conjured Mana Cake', 10, 1),
+      // Test if a -4 decrease is capped at 0
+      new Item('Conjured Mana Cake', -1, 3),
+      // Test if a 0 quality item does not decrease
+      new Item('Conjured Mana Cake', 10, 0),
+    ]);
+
+    const items = gildedRose.updateQuality();
+
+    expect(items[0]?.quality).toBe(0)
+    expect(items[0]?.sellIn).toBe(9)
+
+    expect(items[1]?.quality).toBe(0)
+    expect(items[1]?.sellIn).toBe(-2)
+
+    expect(items[2]?.quality).toBe(0)
+    expect(items[2]?.sellIn).toBe(9)
+  })
+
   it('should leave Sulfuras quality and sellIn unchanged', () => {
     const gildedRose = new GildedRose([new Item('Sulfuras, Hand of Ragnaros', 10, 80)]);
     const items = gildedRose.updateQuality();
